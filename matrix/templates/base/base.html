@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static "css/default.css"%}">
+    <link rel="stylesheet" href="{% static "css/index.css"%}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="content">
+    {% include "parts/nav.html" %}
+    <div class="center">
+        {% block center %}{% endblock %}
+    </div>
+    {% include "parts/foot.html" %}
+</div>
+</body>
+</html>

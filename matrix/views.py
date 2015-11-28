@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import render_to_response
 from django.views.generic.base import View
 
 # Create your views here.
@@ -11,13 +12,13 @@ class BaseView(View):
 class IndexView(BaseView):
 
     def get(self, request):
-        pass
+        return render_to_response('index.html')
 
 
 class SorryView(BaseView):
 
     def get(self, request):
-        pass
+        return render_to_response('sorry.html')
 
 
 class UserView(BaseView):

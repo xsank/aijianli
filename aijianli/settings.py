@@ -29,7 +29,7 @@ if sys.platform == 'win32':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -109,10 +109,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
-MEDIA_ROOT = 'media/'
-MEDIA_URL = '/media/'
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'matrix/templates'),
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'matrix/static'),
 )
+STATIC_ROOT = 'static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'
+
+

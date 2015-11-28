@@ -1,0 +1,25 @@
+.navbar{
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background-color: #4a4a4a;
+    min-height: 60px;
+}
+
+.logo{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    vertical-align: middle;
+    width: 600px;
+    height: 100px;
+}
+
+.logo img{
+    background-color: #f6f6f6;
+}

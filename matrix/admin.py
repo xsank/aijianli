@@ -10,13 +10,13 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class ResumeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'language', 'style', 'isopen')
-    list_filter = ('time', 'language')
+    list_display = ('title', 'language', 'style', 'is_open')
+    list_filter = ('language',)
     search_fields = ('title',)
 
 
 class StyleAdmin(admin.ModelAdmin):
-    list_display = ('info', 'cssaddr')
+    list_display = ('info', 'css_addr')
 
 
 class IDMapAdmin(admin.ModelAdmin):

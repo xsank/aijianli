@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django.db import models
 
 # Create your models here.
@@ -6,7 +7,7 @@ from django.db import models
 class Admin(models.Model):
     name = models.CharField(max_length=20, verbose_name='用户名')
     password = models.CharField(max_length=20, verbose_name='密码')
-    ip = models.IPAddressField(verbose_name='登陆IP')
+    ip = models.GenericIPAddressField(verbose_name='登陆IP')
     time = models.DateField(verbose_name='登陆时间')
 
     def __unicode__(self):
@@ -29,7 +30,7 @@ class IDMap(models.Model):
 
 class Style(models.Model):
     info = models.CharField(max_length=20, verbose_name='样式信息')
-    cssaddr = models.CharField(max_length=100, verbose_name='样式地址')
+    css_addr = models.CharField(max_length=100, verbose_name='样式地址')
 
     def __unicode__(self):
         return self.info
@@ -46,7 +47,7 @@ class Resume(models.Model):
         ('zh', u'中文')
     )
     title = models.CharField(max_length=20, verbose_name='简历名称')
-    language = models.CharField(choices=LANGUAGE, default=CHINESE)
+    language = models.CharField(max_length=10, choices=LANGUAGE, default=CHINESE)
     content = models.TextField(verbose_name='简历内容')
     style = models.ForeignKey(Style, verbose_name='简历样式')
     is_open = models.BooleanField(default=True, verbose_name='是否开放')

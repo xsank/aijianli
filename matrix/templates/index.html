@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-Hello world
-</body>
-</html>
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block title %}爱简历{% endblock %}
+{% block center %}
+<div class="logo">
+    <img src="{% static "images/aijianli.svg" %}">
+</div>
+{% endblock %}
