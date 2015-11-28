@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.views.generic.base import View
 
+from models import IDMap
+from models import Resume
+
 # Create your views here.
 
 
@@ -23,8 +26,11 @@ class SorryView(BaseView):
 
 class UserView(BaseView):
 
-    def get(self, request):
-        pass
+    def get(self, request, id):
+        lang = 'zh'
+        account = IDMap.objects.get(openid=id)
+        resume = Resume.objects.get(user=account, language=lang)
+        return render_to_response('edit.html', {'data': resume})
 
     def post(self, request):
         pass

@@ -10,7 +10,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class ResumeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'language', 'style', 'is_open')
+    list_display = ('title', 'user', 'language', 'is_open')
     list_filter = ('language',)
     search_fields = ('title',)
 

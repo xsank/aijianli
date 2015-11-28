@@ -59,6 +59,7 @@ target/
 .idea
 
 #db
+migrations/
 db.sqlite3
 
 #exe
