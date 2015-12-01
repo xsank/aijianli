@@ -77,6 +77,10 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'matrix/templates'),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
+)
+
 WSGI_APPLICATION = 'aijianli.wsgi.application'
 
 
