@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block title %}爱简历{% endblock %}
+{% block custom_css %}<link rel="stylesheet" href="{% static "css/list.css"%}">{% endblock %}
+{% block center %}
+<div class="common_container">
+    <div class="media">
+       <a class="pull-left" href="#">
+          <img class="media-object" src="test.jpg"
+          alt="test的简历">
+       </a>
+       <div class="media-body">
+          <h4 class="media-heading">test的简历</h4>
+          这是一些示例文本。这是一些示例文本。
+          这是一些示例文本。这是一些示例文本。
+          这是一些示例文本。这是一些示例文本。
+          这是一些示例文本。这是一些示例文本。
+          这是一些示例文本。这是一些示例文本。
+       </div>
+    </div>
+    <div class="media">
+       <a class="pull-left" href="#">
+          <img class="media-object" src="test.jpg"
+          alt="test的简历">
+       </a>
+       <div class="media-body">
+          <h4 class="media-heading">test的简历</h4>
+          这是一些示例文本。这是一些示例文本。
+          这是一些示例文本。这是一些示例文本。
+          这是一些示例文本。这是一些示例文本。
+          这是一些示例文本。这是一些示例文本。
+          这是一些示例文本。这是一些示例文本。
+       </div>
+    </div>
+    <div class="pagebar">
+        <ul class="pagination pagination-lg">
+          <li><a href="#">上一页</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">下一页</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

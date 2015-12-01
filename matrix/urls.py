@@ -12,4 +12,5 @@ urlpatterns = patterns('',
                        (r'^resume/(?P<id>[\w\d]+)/preview$',
                         Preview.as_view()),
                        (r'^sorry$', SorryView.as_view()),
+                       (r'^everybody/(?P<pageid>\d+)$', ListView.as_view()),
                        )

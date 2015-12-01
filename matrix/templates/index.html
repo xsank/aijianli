@@ -1,8 +1,10 @@
 {% extends "base/base.html" %}
 {% load staticfiles %}
 {% block title %}爱简历{% endblock %}
+{% block custom_css %}<link rel="stylesheet" href="{% static "css/index.css"%}">{% endblock %}
 {% block center %}
 <div class="logo">
     <img src="{% static "images/aijianli.svg" %}">
+    <h2>开启你的"爱"简历之旅~</h2>
 </div>
 {% endblock %}

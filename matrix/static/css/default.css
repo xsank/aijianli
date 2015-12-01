@@ -1,8 +1,18 @@
-html{
-    padding: 0;
-    margin: 0;
-}
-
 body{
     background-color: #f6f6f6;
+}
+
+.navbar{
+    background-color: #4a4a4a;
+    color: white;
+}
+
+button{
+    background-color: gray;
+}
+
+.common_container{
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
 }

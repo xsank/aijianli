@@ -1,5 +1,14 @@
 {% extends "base/base.html" %}
-{% block title %}无权访问{% endblock %}
+{% load staticfiles %}
+{% block title %}爱简历{% endblock %}
 {% block center %}
-您没有权限访问此页面
+<div class="jumbotron common_container">
+   <div class="container">
+      <h1>禁止访问！</h1>
+      <p>该用户未将简历开放，暂时无法访问~</p>
+      <p><a class="btn btn-primary btn-lg" role="button">
+         返回</a>
+      </p>
+   </div>
+</div>
 {% endblock %}

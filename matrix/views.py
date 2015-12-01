@@ -18,6 +18,12 @@ class IndexView(BaseView):
         return render_to_response('index.html')
 
 
+class ListView(BaseView):
+
+    def get(self, request, pageid):
+        return render_to_response('list.html')
+
+
 class SorryView(BaseView):
 
     def get(self, request):
@@ -27,19 +33,19 @@ class SorryView(BaseView):
 class UserView(BaseView):
 
     def get(self, request, id):
+        return render_to_response('user.html')
+
+    def post(self, request):
         lang = 'zh'
         account = IDMap.objects.get(openid=id)
         resume = Resume.objects.get(user=account, language=lang)
         return render_to_response('edit.html', {'data': resume})
 
-    def post(self, request):
-        pass
-
 
 class ResumeView(BaseView):
 
-    def get(self, request):
-        pass
+    def get(self, request, id):
+        return render_to_response('edit.html')
 
     def post(self, request):
         pass
@@ -56,5 +62,5 @@ class ExportView(BaseView):
 
 class Preview(BaseView):
 
-    def get(self, request):
-        pass
+    def get(self, request, id):
+        return render_to_response('show.html')

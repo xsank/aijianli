@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block title %}爱简历{% endblock %}
+{% block custom_css %}<link rel="stylesheet" href="{% static "css/user.css"%}">{% endblock %}
+{% block center %}
+<div id="start_form" class="common_container">
+    <form role="form">
+       <div class="form-group">
+          <label for="firstname" class="col-sm-2 control-label">个人标签</label>
+          <div class="col-sm-10">
+             <input type="text" class="form-control" id="name"
+                placeholder="请输入个人标签">
+          </div>
+       </div>
+       <div class="form-group">
+          <label for="firstname" class="col-sm-2 control-label">简历语言</label>
+          <div class="col-sm-10">
+              <select class="form-control">
+                 <option value="">中文</option>
+                 <option value="">English</option>
+              </select>
+           </div>
+       </div>
+       <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+             <button type="submit" class="btn btn-default">开始</button>
+          </div>
+       </div>
+    </form>
+</div>
+{% endblock %}
