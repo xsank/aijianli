@@ -30,6 +30,8 @@ class IDMap(models.Model):
 
 class User(models.Model):
     account = models.ForeignKey(IDMap, verbose_name='用户标识')
+    photo = models.FileField(upload_to='user/photo',
+                             blank=True, verbose_name='头像')
     password = models.CharField(max_length=20, verbose_name='密码')
     time = models.DateField(verbose_name='登陆时间')
 
@@ -63,7 +65,7 @@ class Resume(models.Model):
     language = models.CharField(
         max_length=10, choices=LANGUAGE, default=CHINESE)
     content = models.TextField(verbose_name='简历内容')
-    #style = models.ForeignKey(Style,null=True, verbose_name='简历样式')
+    style = models.ForeignKey(Style, null=True, verbose_name='简历样式')
     is_open = models.BooleanField(default=True, verbose_name='是否开放')
 
     def __unicode__(self):

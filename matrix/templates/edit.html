@@ -8,94 +8,105 @@
 {% endblock %}
 {% block center %}
 <div class="big_container">
-    <form role="form">
+    <form role="form" action="/resume/{{ request.session.account }}" method="post">
+        {% csrf_token %}
         <div id="head_container">
-        <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">简历名称</label>
-          <div class="col-sm-10">
-          <input type="text" class="form-control" id="name"
-             placeholder="请输入简历名称">
-          </div>
-       </div>
-       <div class="form-group">
-          <label for="type" class="col-sm-2 control-label">简历样式</label>
-          <div class="col-sm-10">
-              <select class="form-control">
-                 <option value="">默认样式</option>
-                 <option value="">墨绿</option>
-                 <option value="">天蓝</option>
-              </select>
+            <div class="form-group">
+              <label for="title" class="col-sm-2 control-label">简历名称</label>
+              <div class="col-sm-10">
+              <input type="text" class="form-control" name="title"
+                 placeholder="请输入简历名称">
+              </div>
            </div>
-       </div>
-       <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-             <div class="checkbox">
-                <label>
-                   <input type="checkbox"> 开放简历
-                </label>
-             </div>
-          </div>
-       </div>
-        <div id="middle_container">
-            <div class="features">
-                <section class="editor">
-                    <div class="outer">
-                        <div class="editorwrap">
-                            <section class="entry-markdown">
-                                <header class="floatingheader">
-                                    &nbsp;&nbsp; Markdown
-                                </header>
-                                <section class="entry-markdown-content">
-                                <textarea id="entry-markdown">Ghost has an incredibly simple concept for writing. You write in [Markdown](http://daringfireball.net/markdown) on the left, and you see an immediate preview of exactly what your post will look like in rendered HTML on the right.
+           <div class="form-group">
+              <label for="style" class="col-sm-2 control-label">简历样式</label>
+              <div class="col-sm-10">
+                  <select name="style" class="form-control">
+                     <option value="1">默认样式</option>
+                     <option value="2">墨绿</option>
+                     <option value="3">天蓝</option>
+                  </select>
+               </div>
+           </div>
+           <div class="form-group">
+              <label for="language" class="col-sm-2 control-label">语言</label>
+              <div class="col-sm-10">
+                  <select name="language" class="form-control">
+                     <option value="zh">中文</option>
+                     <option value="en">English</option>
+                  </select>
+               </div>
+           </div>
+           <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                 <div class="checkbox">
+                    <label for="is_open">
+                       <input name="is_open" type="checkbox" value=""> 开放简历
+                    </label>
+                 </div>
+              </div>
+           </div>
+            <div id="middle_container">
+                <div class="features">
+                    <section class="editor">
+                        <div class="outer">
+                            <div class="editorwrap">
+                                <section class="entry-markdown">
+                                    <header class="floatingheader">
+                                        &nbsp;&nbsp; Markdown
+                                    </header>
+                                    <section class="entry-markdown-content">
+                                    <textarea id="entry-markdown" name="content">Ghost has an incredibly simple concept for writing. You write in [Markdown](http://daringfireball.net/markdown) on the left, and you see an immediate preview of exactly what your post will look like in rendered HTML on the right.
 
-        ###The Benefits Are Obvious!
+            ###The Benefits Are Obvious!
 
-        * Never stop writing, format on the fly
-        * No messing around with *buttons* everywhere
-        * No writing repetitive HTML markup
-        * Mobile friendly
+            * Never stop writing, format on the fly
+            * No messing around with *buttons* everywhere
+            * No writing repetitive HTML markup
+            * Mobile friendly
 
-        It's a wonderful solution to a problem which bloggers have faced for many years now.
+            It's a wonderful solution to a problem which bloggers have faced for many years now.
 
-        > Applying a multitude of formatting styles, with very little effort, and seeing those styles rendered exactly as they will appear on the website.
+            > Applying a multitude of formatting styles, with very little effort, and seeing those styles rendered exactly as they will appear on the website.
 
-        Give it a try! Start typing in the `Markdown` box. It's easy.</textarea>
+            Give it a try! Start typing in the `Markdown` box. It's easy.</textarea>
+                                    </section>
                                 </section>
-                            </section>
-                            <section class="entry-preview active">
-                                <header class="floatingheader">
-                                  &nbsp;&nbsp; Preview <span class="entry-word-count">0 words</span>
-                                </header>
-                                <section class="entry-preview-content">
-                                    <div class="rendered-markdown"></div>
+                                <section class="entry-preview active">
+                                    <header class="floatingheader">
+                                      &nbsp;&nbsp; Preview <span class="entry-word-count">0 words</span>
+                                    </header>
+                                    <section class="entry-preview-content">
+                                        <div class="rendered-markdown"></div>
+                                    </section>
                                 </section>
-                            </section>
+                            </div>
                         </div>
+                    </section>
+                </div>
+            </div>
+            <div id="foot_container">
+                <div class="form-group">
+                       <button type="submit" class="btn btn-default">保存</button>
+                </div>
+                <div class="form-group">
+                   <div class="dropdown">
+                       <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                          data-toggle="dropdown"> 导出
+                          <span class="caret"></span>
+                       </button>
+                       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <li role="presentation">
+                             <a role="menuitem" tabindex="-1" href="#">文本文件</a>
+                          </li>
+                          <li role="presentation">
+                             <a role="menuitem" tabindex="-1" href="#">Html文件</a>
+                          </li>
+                          <li role="presentation">
+                             <a role="menuitem" tabindex="-1" href="#">Pdf文件</a>
+                          </li>
+                        </ul>
                     </div>
-                </section>
-            </div>
-        </div>
-        <div id="foot_container">
-            <div class="form-group">
-                   <button type="submit" class="btn btn-default">保存</button>
-            </div>
-            <div class="form-group">
-               <div class="dropdown">
-                   <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
-                      data-toggle="dropdown"> 导出
-                      <span class="caret"></span>
-                   </button>
-                   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                      <li role="presentation">
-                         <a role="menuitem" tabindex="-1" href="#">文本文件</a>
-                      </li>
-                      <li role="presentation">
-                         <a role="menuitem" tabindex="-1" href="#">Html文件</a>
-                      </li>
-                      <li role="presentation">
-                         <a role="menuitem" tabindex="-1" href="#">Pdf文件</a>
-                      </li>
-                    </ul>
                 </div>
             </div>
         </div>

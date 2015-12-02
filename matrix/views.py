@@ -1,3 +1,5 @@
+from functools import wraps
+
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.views.generic.base import View
@@ -5,16 +7,19 @@ from django.shortcuts import HttpResponseRedirect
 
 from models import IDMap
 from models import Resume
+from models import Style
+from forms import ResumeForm
 
 # Create your views here.
 
 
 def check_login(func):
-    def decorate(self, request, *args):
+    @wraps(func)
+    def decorate(self, request, *args, **kwargs):
         if not request.session.get('account', None):
             return HttpResponseRedirect('/')
         else:
-            return func(self, request, *args)
+            return func(self, request, *args, **kwargs)
     return decorate
 
 
@@ -31,7 +36,7 @@ class IndexView(BaseView):
 class StartView(BaseView):
 
     def get(self, request):
-        return render(request, 'create.html')
+        return render(request, 'choose.html')
 
     def post(self, request):
         return HttpResponseRedirect('/resume/%s' % request.session['account'])
@@ -48,7 +53,7 @@ class LoginView(BaseView):
         '''
         account = "9527"
         request.session["account"] = account
-        return HttpResponseRedirect('/start')
+        return HttpResponseRedirect('/resume/%s' % account)
 
 
 class LogoutView(BaseView):
@@ -90,14 +95,25 @@ class ResumeView(BaseView):
 
     @check_login
     def get(self, request, id):
-        return render_to_response('edit.html')
+        return render(request, 'edit.html')
 
     @check_login
-    def post(self, request):
-        pass
+    def post(self, request, id):
+        form = ResumeForm(request.POST)
+        if form.is_valid():
+            user = IDMap.objects.get(openid=id)
+            style = Style.objects.get(id=form.cleaned_data['style'])
+            resume = Resume(user=user,
+                            title=form.cleaned_data['title'],
+                            language=form.cleaned_data['language'],
+                            style=style,
+                            is_open=form.cleaned_data['is_open'],
+                            content=form.cleaned_data['content'])
+            resume.save()
+        return render(request, 'edit.html')
 
     @check_login
-    def delete(self, request):
+    def delete(self, request, id):
         pass
 
 
