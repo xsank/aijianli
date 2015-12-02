@@ -3,8 +3,11 @@
 {% block title %}编辑{% endblock %}
 {% block custom_css %}
     <link rel="stylesheet" href="{% static "css/edit.css"%}">
+    <link rel="stylesheet" href="{% static "css/editor.css"%}">
+    <link rel="stylesheet" href="{% static "css/dropzone.css"%}">
     <link rel="stylesheet" href="{% static "css/ghostdown.css"%}">
     <script src="{% static "js/ghostdown.js"%}"></script>
+    <script src="{% static "js/dropzone.js"%}"></script>
 {% endblock %}
 {% block center %}
 <div class="big_container">
@@ -46,7 +49,7 @@
                  </div>
               </div>
            </div>
-            <div id="middle_container">
+           <div id="middle_container">
                 <div class="features">
                     <section class="editor">
                         <div class="outer">
@@ -56,20 +59,20 @@
                                         &nbsp;&nbsp; Markdown
                                     </header>
                                     <section class="entry-markdown-content">
-                                    <textarea id="entry-markdown" name="content">Ghost has an incredibly simple concept for writing. You write in [Markdown](http://daringfireball.net/markdown) on the left, and you see an immediate preview of exactly what your post will look like in rendered HTML on the right.
+                                        <textarea id="entry-markdown" name="content">Ghost has an incredibly simple concept for writing. You write in [Markdown](http://daringfireball.net/markdown) on the left, and you see an immediate preview of exactly what your post will look like in rendered HTML on the right.
 
-            ###The Benefits Are Obvious!
+###The Benefits Are Obvious!
 
-            * Never stop writing, format on the fly
-            * No messing around with *buttons* everywhere
-            * No writing repetitive HTML markup
-            * Mobile friendly
+* Never stop writing, format on the fly
+* No messing around with *buttons* everywhere
+* No writing repetitive HTML markup
+* Mobile friendly
 
-            It's a wonderful solution to a problem which bloggers have faced for many years now.
+It's a wonderful solution to a problem which bloggers have faced for many years now.
 
-            > Applying a multitude of formatting styles, with very little effort, and seeing those styles rendered exactly as they will appear on the website.
+> Applying a multitude of formatting styles, with very little effort, and seeing those styles rendered exactly as they will appear on the website.
 
-            Give it a try! Start typing in the `Markdown` box. It's easy.</textarea>
+Give it a try! Start typing in the `Markdown` box. It's easy.</textarea>
                                     </section>
                                 </section>
                                 <section class="entry-preview active">
@@ -83,9 +86,9 @@
                             </div>
                         </div>
                     </section>
-                </div>
+	            </div>
             </div>
-            <div id="foot_container">
+           <div id="foot_container">
                 <div class="form-group">
                        <button type="submit" class="btn btn-default">保存</button>
                 </div>
