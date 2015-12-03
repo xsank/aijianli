@@ -13,10 +13,10 @@
                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                   <li role="presentation" class="dropdown-header">管理</li>
                   <li role="presentation" >
-                     <a role="menuitem" tabindex="-1" href="#">个人信息</a>
+                     <a role="menuitem" tabindex="-1" href="/account/{{ request.session.account }}">个人信息</a>
                   </li>
                   <li role="presentation" >
-                     <a role="menuitem" tabindex="-1" href="#">编辑简历</a>
+                     <a role="menuitem" tabindex="-1" href="/resume/{{ request.session.account }}">编辑简历</a>
                   </li>
                   <li role="presentation">
                      <a role="menuitem" tabindex="-1" href="#">简历预览</a>

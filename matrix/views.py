@@ -5,10 +5,8 @@ from django.shortcuts import render_to_response
 from django.views.generic.base import View
 from django.shortcuts import HttpResponseRedirect
 
-from models import IDMap
-from models import Resume
-from models import Style
-from forms import ResumeForm
+from models import *
+from forms import *
 
 # Create your views here.
 
@@ -53,6 +51,7 @@ class LoginView(BaseView):
         '''
         account = "9527"
         request.session["account"] = account
+        IDMap.objects.update_or_create(openid=account, name="")
         return HttpResponseRedirect('/resume/%s' % account)
 
 
@@ -84,11 +83,16 @@ class UserView(BaseView):
         return render(request, 'user.html')
 
     @check_login
-    def post(self, request):
-        lang = 'zh'
-        account = IDMap.objects.get(openid=id)
-        resume = Resume.objects.get(user=account, language=lang)
-        return render_to_response('edit.html', {'data': resume})
+    def post(self, request, id):
+        form = UserForm(request.POST, request.FILES)
+        if form.is_valid():
+            IDMap.objects.update(openid=id, name=form.cleaned_data['name'])
+            account = IDMap.objects.get(openid=id)
+            User.objects.update_or_create(
+                account=account,
+                password=form.cleaned_data['password'],
+                photo=request.FILES['photo'])
+        return render(request, 'user.html')
 
 
 class ResumeView(BaseView):

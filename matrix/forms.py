@@ -18,4 +18,5 @@ class ResumeForm(forms.Form):
 
 class UserForm(forms.Form):
     name = forms.CharField(label='name', max_length=20)
-    photo = forms.ImageField(label='photo')
+    password = forms.CharField(label='password', max_length=20)
+    photo = forms.ImageField(label='photo', required=False)

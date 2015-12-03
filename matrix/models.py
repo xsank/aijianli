@@ -30,10 +30,10 @@ class IDMap(models.Model):
 
 class User(models.Model):
     account = models.ForeignKey(IDMap, verbose_name='用户标识')
-    photo = models.FileField(upload_to='user/photo',
+    photo = models.ImageField(upload_to='user/photo',
                              blank=True, verbose_name='头像')
     password = models.CharField(max_length=20, verbose_name='密码')
-    time = models.DateField(verbose_name='登陆时间')
+    time = models.DateField(auto_now=True, verbose_name='登陆时间')
 
     def __unicode__(self):
         return unicode(self.account)
